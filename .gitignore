@@ -1,0 +1,6 @@
+*.swp
+*.swo
+*~
+images/*
+qemu-test.hd.img
+tmp/*
