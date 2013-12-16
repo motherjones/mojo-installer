@@ -9,34 +9,34 @@ d-i clock-setup/utc boolean true
 base-config tzconfig/choose_country_zone_single boolean true
 
 # don't mess with the keymap
-#console-common  console-data/keymap/policy      select  Don't touch keymap
-#console-data    console-data/keymap/policy      select  Don't touch keymap
+console-common  console-data/keymap/policy      select  Don't touch keymap
+console-data    console-data/keymap/policy      select  Don't touch keymap
 
 # keyboard layouts
-console-data console-data/keymap/qwerty/layout select US american
-console-data console-data/keymap/family select qwerty
-console-common console-data/keymap/family select qwerty
-
-
-#### Network configuration.
-d-i netcfg/choose_interface select auto
-
-# TODO: possibly we want these removed?:
-
-d-i netcfg/get_hostname string unassigned
-d-i netcfg/get_domain string unassigned
-
-# Disable that annoying WEP key dialog.
-d-i netcfg/wireless_wep string 
-
-
-### Partitioning.
-# TODO: this will take work to make sure we get what we wnat from it
-# we like crypto
+#console-data console-data/keymap/qwerty/layout select US american
+#console-data console-data/keymap/family select qwerty
+#console-common console-data/keymap/family select qwerty
 #
+#
+##### Network configuration.
+d-i netcfg/choose_interface select auto
+#
+## TODO: possibly we want these removed?:
+#
+#d-i netcfg/get_hostname string unassigned
+#d-i netcfg/get_domain string unassigned
+#
+## Disable that annoying WEP key dialog.
+d-i netcfg/wireless_wep string 
+#
+#
+#### Partitioning.
+## TODO: this will take work to make sure we get what we wnat from it
+## we like crypto
+##
 d-i partman-auto/method string crypto
-
-# we don't want any questions about blowing this all away
+#
+## we don't want any questions about blowing this all away
 d-i partman-lvm/device_remove_lvm boolean true
 d-i partman-md/device_remove_md boolean true
 d-i partman-lvm/confirm boolean true
@@ -54,7 +54,7 @@ d-i partman/confirm_nooverwrite boolean true
 #### Boot loader installation.
 
 # install grub to the MBR
-d-i grub-installer/only_debian  boolean true
+-i grub-installer/only_debian  boolean true
 # i dunno, maybe we'll want this some day... i'm leaving it here but commented
 # out:
 # d-i grub-installer/with_other_os  boolean true
@@ -66,10 +66,10 @@ d-i grub-installer/only_debian  boolean true
 #base-config apt-setup/uri_type  select http
 base-config apt-setup/uri_type  select cdrom
 # only scan the first CD by default
-#base-config apt-setup/cd/another  boolean false
+base-config apt-setup/cd/another  boolean false
 # don't ask to use additional mirrors
-base-config apt-setup/another boolean false
-# Use a network mirror?
+#base-config apt-setup/another boolean false
+## Use a network mirror?
 # apt-mirror-setup        apt-setup/use_mirror    boolean false
 
 # Do enable security updates.
@@ -110,4 +110,4 @@ d-i     popularity-contest/participate  boolean true
 
 # loads the simple-cdd-profiles udeb to which asks for which profiles to use,
 # load the debconf preseeding and queue packages for installation.
-d-i preseed/early_command string anna-install simple-cdd-profiles
+#d-i preseed/early_command string anna-install simple-cdd-profiles
