@@ -21,8 +21,10 @@ irssi-scripts
 iw
 keepass2
 mono-runtime
+pavucontrol
 pidgin
 pidgin-otr
+pulseaudio
 python-pip
 rxvt-unicode-256color
 slim
